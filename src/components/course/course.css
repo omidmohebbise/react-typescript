@@ -1,0 +1,12 @@
+.course-bg {
+  background-color: lightgray;
+  padding: 1rem;
+  margin: 1rem;
+  border: 2px solid gray;
+  border-radius: 8px;
+}
+.course-card {
+  width: 15rem;
+  height: 15rem !important;
+  padding: 1rem;
+}

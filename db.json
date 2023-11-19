@@ -1,0 +1,28 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Java Development",
+      "tutor": "Omid Joon",
+      "isActive": true
+    },
+    {
+      "id": 2,
+      "title": "Master Javascript",
+      "tutor": "Taraneh Jan",
+      "isActive": true
+    },
+    {
+      "id": 3,
+      "title": "How to write queries",
+      "tutor": "Ali Mohebbi",
+      "isActive": true
+    },
+    {
+      "id": 4,
+      "title": "Interview tips",
+      "tutor": "Omid Joon",
+      "isActive": false
+    }
+  ]
+}
