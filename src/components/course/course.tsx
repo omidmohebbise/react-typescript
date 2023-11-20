@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./course.css";
 import CourseList from "./coursList";
-import CourseForm from "./corseForm";
+import CourseForm from "./coruseForm";
 import { Button } from "react-bootstrap";
 import AnyModal from "../utils/modal/modal";
 
