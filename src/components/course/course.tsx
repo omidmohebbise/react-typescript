@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./course.css";
 import CourseList from "./coursList";
 import CourseForm from "./corseForm";
+import { Button } from "react-bootstrap";
+import AnyModal from "../utils/modal/modal";
 
-interface Course {
+export interface CourseState {
   id: number;
   title: string;
   rate: number;
@@ -12,7 +14,7 @@ interface Course {
 }
 
 const Course = () => {
-  const [courseList, setCourseList] = useState<Course[]>([]);
+  const [courseList, setCourseList] = useState<CourseState[]>([]);
   const [addModal, setAddModal] = useState<boolean>(false);
 
   useEffect(() => {
@@ -38,18 +40,25 @@ const Course = () => {
               className="form-control w-50"
               placeholder="search course ..."
             />
-            <button
+            <Button
               onClick={() => setAddModal(true)}
               className="btn btn-primary"
-              data-bs-toggle="modal"
             >
               Add Course
-            </button>
+            </Button>
           </div>
           <CourseList courses={courseList} />
         </div>
       </div>
-      {addModal && <CourseForm />}
+
+      {addModal && (
+        <AnyModal
+          headerTitle="Add Course"
+          body={<CourseForm />}
+          show={addModal}
+          handleClose={() => setAddModal(false)}
+        />
+      )}
     </>
   );
 };

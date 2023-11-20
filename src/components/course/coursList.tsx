@@ -1,8 +1,8 @@
 import * as React from "react";
-import Course from "./course";
+import { CourseState } from "./course";
 
 interface CourseListProps {
-  courses: Course[];
+  courses: CourseState[];
 }
 
 const CourseList: React.FC<CourseListProps> = ({ courses }) => {
