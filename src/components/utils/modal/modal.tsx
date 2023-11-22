@@ -7,6 +7,7 @@ interface ModalProps {
   size?: "sm" | "lg" | "xl";
   show: boolean;
   handleClose: () => void;
+  onSave: () => void;
 }
 
 const AnyModal: React.FC<ModalProps> = ({
@@ -15,6 +16,7 @@ const AnyModal: React.FC<ModalProps> = ({
   size = "lg",
   show,
   handleClose,
+  onSave,
 }) => {
   return (
     <Modal size={size} show={show} onHide={handleClose}>
@@ -26,7 +28,7 @@ const AnyModal: React.FC<ModalProps> = ({
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button variant="success" onClick={handleClose}>
+        <Button variant="success" onClick={onSave}>
           Save
         </Button>
       </Modal.Footer>

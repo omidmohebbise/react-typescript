@@ -8,14 +8,19 @@ import AnyModal from "../utils/modal/modal";
 export interface CourseState {
   id: number;
   title: string;
-  rate: number;
   tutor: string;
   isActive: boolean;
+  capacity: number;
 }
 
 const Course = () => {
   const [courseList, setCourseList] = useState<CourseState[]>([]);
   const [addModal, setAddModal] = useState<boolean>(false);
+  const [course, setCourse] = useState<CourseState>({} as CourseState);
+
+  const onSave: () => void = () => {
+    console.log(course);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,8 +59,9 @@ const Course = () => {
       {addModal && (
         <AnyModal
           headerTitle="Add Course"
-          body={<CourseForm />}
+          body={<CourseForm course={course} updateCourse={setCourse} />}
           show={addModal}
+          onSave={onSave}
           handleClose={() => setAddModal(false)}
         />
       )}

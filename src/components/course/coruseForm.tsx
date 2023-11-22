@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Form } from "react-bootstrap";
+import { CourseState } from "./course";
 
-interface CourseFormProps {}
+interface CourseFormProps {
+  course: CourseState;
+  updateCourse: (course: CourseState) => void;
+}
 
-const CourseForm: React.FC = () => {
-  const [title, setTitle] = React.useState<string>("");
-  const [tutor, setTutor] = React.useState<string>("");
-  const [capacity, setCapacity] = React.useState<number>();
-  const [isActive, setIsActive] = React.useState<boolean>(false);
+const CourseForm: React.FC<CourseFormProps> = ({ course, updateCourse }) => {
   return (
     <Form>
       <Form.Group className="mb-3" controlId="title">
@@ -15,8 +15,8 @@ const CourseForm: React.FC = () => {
         <Form.Control
           type="text"
           placeholder="Enter title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={course.title}
+          onChange={(e) => updateCourse({ ...course, title: e.target.value })}
         />
       </Form.Group>
 
@@ -25,16 +25,21 @@ const CourseForm: React.FC = () => {
         <Form.Control
           type="text"
           placeholder="Enter tutor"
-          value={tutor}
-          onChange={(e) => setTutor(e.target.value)}
+          value={course.tutor}
+          onChange={(e) => updateCourse({ ...course, tutor: e.target.value })}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="capacity">
         <Form.Label>Capacity</Form.Label>
         <Form.Select
           aria-label="Default select example"
-          value={capacity}
-          onChange={(e) => setCapacity(e.target.value as unknown as number)}
+          value={course.capacity}
+          onChange={(e) =>
+            updateCourse({
+              ...course,
+              capacity: e.target.value as unknown as number,
+            })
+          }
         >
           <option value="10">10</option>
           <option value="20">20</option>
@@ -46,8 +51,10 @@ const CourseForm: React.FC = () => {
         <Form.Check
           type="checkbox"
           label="Activate this course"
-          onChange={(e) => setIsActive(e.target.checked)}
-          checked={isActive}
+          onChange={(e) =>
+            updateCourse({ ...course, isActive: e.target.checked })
+          }
+          checked={course.isActive}
         />
       </Form.Group>
     </Form>
